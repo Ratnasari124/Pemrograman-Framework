@@ -1,70 +1,265 @@
-# Getting Started with Create React App
+*** LAPORAN PRAKTIKUM 2 ***
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+|        |   Pemrograman Berbasis Framework   |
+|--------|------------------------------------|
+|Nama    | Ratnasari                          |
+|NIM     | 2241720007                         |
+|Kelas   | TI-3B                              |
+|Absen   | 18                                 |
+|Tugas   | Pertemuan 2                        |
 
-## Available Scripts
+LANGKAH-LANGKAH PRAKTIKUM
+1. Persiapan Lingkungan
 
-In the project directory, you can run:
+![gambar1](./imgp2/L1.png)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. Membuat Komponen React
+``` dart
+import React from 'react';
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+// Komponen Header
+function Header() {
+  return (
+    <header>
+      <h1>Aplikasi React Saya</h1>
+    </header>
+  );
+}
 
-### `npm test`
+// Komponen Main
+function Main() {
+  return (
+    <main>
+      <h2>Selamat datang di Aplikasi React Saya!</h2>
+      <p>Ini adalah area konten utama</p>
+    </main>
+  );
+}
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+// Komponen Footer
+function Footer() {
+  return (
+    <footer>
+      <p>&copy; 2025 Aplikasi React Saya</p>
+    </footer>
+  );
+}
 
-### `npm run build`
+// Komponen App yang menggunakan Header, Main, dan Footer
+function App() {
+  return (
+    <div>
+      <Header />
+      <Main />
+      <Footer />
+    </div>
+  );
+}
+export default App;
+```
+Hasil :
+![gambar1](./imgp2/L2.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Menggunakan JSX untuk Membuat Komponen Dinamis 
+    - Counter.js
+    ``` dart
+        import React, { useState } from 'react';
 
-### `npm run eject`
+        function Counter() {
+        const [count, setCount] = useState(0);
+        function handleClick(){
+            setCount(count + 1);
+        }
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+        return (
+            <div>
+            <p>Hitungan: {count}</p>
+            <button onClick={handleClick}>Tambah</button>
+            </div>
+        );
+        }
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+        export default Counter;
+    ```
+    - tambahkan pada src/App.js
+    ``` dart
+        import Counter from './Counter'; 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+        function App() {
+        return (
+            <div>
+            <Header />
+            <Main />
+            // <Counter />
+            <TodoList />
+            <Footer />
+            </div>
+        );
+        }
+    ```
+    hasil :
+    ![gambar1](./imgp2/L3.png)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. Menggunakan Props untuk Mengirim Data 
+    - Greeting.js 
+    ``` dart
+        function Greeting(props) {
+        return <h1>Hallo, {props.name}!</h1>;
+        }
+        
+        export default Greeting; // ✅ Tambahkan ini
+        
+    ```
+    - src/App.js
+    ``` dart
+        import Greeting from './Greeting';
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+        function App() {
+        return (
+            <div>
+            <Header />
+            <Main />
+            //<Greeting name="John" />
+            // <Counter />
+            <Footer />
+            </div>
+        );
+        }
+    ```
+    -Hasil :
+    ![gambar1](./imgp2/L4.png)
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+5. Menggunakan State untuk Mengelola Data 
+    - src/App.js
+    ``` dart
+        function Example(){
+        const [name, setName] = useState('');
+        const [age, setAge] = useState(0);
+        const [email, setEmail] = useState('');
 
-### Analyzing the Bundle Size
+        const handleNameChange = (e) => {
+            setName(e.target.value);
+        }
+        const handleAgeChange = (e) => {
+            setAge(e.target.value);
+        }
+        const handleEmailChange = (e) => {
+            setEmail(e.target.value);
+        }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+        return (
+            <div>
+            <input type='text' placeholder='Nama' value={name} onChange={handleNameChange}/>
+            <input type='number' placeholder='Umur' value={age} onChange={handleAgeChange}/>
+            <input type='email' placeholder='Email' value={email} onChange={handleEmailChange}/>
+            <p>{name} berumur {age} tahun dan emailnya adalah {email}.</p>
+            </div>
+        );
+        }
+    ```
+    ``` dart
+        function App1() {
+            return (
+                <div>
+                <Header />
+                <Main />
+                //<Greeting name="John" />
+                // <Counter />
+                // <Example />
+                <h1> Aplikasi To do List</h1>
+                <TodoList />
+                <Footer />
+                </div>
+            );
+        }
+    ```
+    - hasil :
+    ![gambar1](./imgp2/L5.png)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Tugas 
+1. Buat komponen baru bernama TodoList yang menampilkan daftar tugas (todo list). Gunakan 
+state untuk mengelola daftar tugas dan props untuk mengirim data tugas ke komponen anak. 
+2. Tambahkan fitur untuk menambahkan tugas baru ke dalam daftar menggunakan form input. 
+3. Implementasikan fitur untuk menghapus tugas dari daftar.
+tambahkan file TodoItem.js dan TodoList.js
 
-### Advanced Configuration
+TodoItem.js
+``` dart
+    // src/TodoItem.js
+    import React from "react";
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    function TodoItem({ task, onDelete }) {
+    return (
+        <li>
+        {task}
+        <button onClick={onDelete} style={{ marginLeft: "10px" }}>Hapus</button>
+        </li>
+    );
+    }
 
-### Deployment
+    export default TodoItem;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
 
-### `npm run build` fails to minify
+TodoList.js
+``` dart
+            // src/TodoList.js
+        import React, { useState } from "react";
+        import TodoItem from "./TodoItem";
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+        function TodoList() {
+        const [tasks, setTasks] = useState([]); // State daftar tugas
+        const [newTask, setNewTask] = useState(""); // State untuk input tugas baru
+
+        // Tambah tugas baru
+        const addTask = () => {
+            if (newTask.trim() === "") return;
+            setTasks([...tasks, newTask]); // Menambahkan tugas ke daftar
+            setNewTask(""); // Reset input
+        };
+
+        // Hapus tugas berdasarkan indeksnya
+        const deleteTask = (index) => {
+            const updatedTasks = tasks.filter((_, i) => i !== index);
+            setTasks(updatedTasks);
+        };
+
+        return (
+            <div>
+            <h2>Todo List</h2>
+            <input
+                type="text"
+                placeholder="Tambahkan tugas..."
+                value={newTask}
+                onChange={(e) => setNewTask(e.target.value)}
+            />
+            <button onClick={addTask}>Tambah</button>
+
+            <ul>
+                {tasks.map((task, index) => (
+                <TodoItem key={index} task={task} onDelete={() => deleteTask(index)} />
+                ))}
+            </ul>
+            </div>
+        );
+        }
+
+        export default TodoList;
+
+```
+
+
+hasil :
+
+![gambar1](./imgp2/Tp2.1.png)
+
+![gambar1](./imgp2/Tp2.2.png)
+
+![gambar1](./imgp2/Tp2.3.png)

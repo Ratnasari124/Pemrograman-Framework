@@ -2,6 +2,7 @@
 import Greeting from './Greeting';
 import Counter from './Counter'; 
 import React, { useState } from 'react';
+import TodoList from "./TodoList";
 
 
 function Example(){
@@ -61,11 +62,21 @@ function Footer() {
 function App() {
   return (
     <div>
+      <h1> Aplikasi To do List</h1>
+      <TodoList />
+    </div>
+  );
+}
+function App1() {
+  return (
+    <div>
       <Header />
       <Main />
-      <Greeting name="John" />
-      <Counter />
-      <Example />
+      //<Greeting name="John" />
+      // <Counter />
+      // <Example />
+      <h1> Aplikasi To do List</h1>
+      <TodoList />
       <Footer />
     </div>
   );
