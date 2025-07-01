@@ -4,10 +4,38 @@ import { useState } from "react";
 
 // Daftar Artikel
 const essays = [
-  { id: 1, title: "Pemrograman Fungsional", content: "Penjelasan lebih lanjut tentang pemrograman fungsional..." },
-  { id: 2, title: "Mengenal Tailwind CSS", content: "Tailwind CSS adalah framework CSS yang berbasis utility-first..." },
-  { id: 3, title: "Next.js untuk Pemula", content: "Panduan langkah demi langkah untuk memulai proyek dengan Next.js..." },
+  {
+    id: 1,
+    title: "Mengenal Konsep Pemrograman Fungsional",
+    content: "Pemrograman fungsional menekankan pada penggunaan fungsi murni dan stateless. Artikel ini membahas bagaimana paradigma ini dapat meningkatkan kualitas kode dan mempermudah debugging."
+  },
+  {
+    id: 2,
+    title: "Tailwind CSS: Revolusi Desain Front-End",
+    content: "Framework utility-first ini memungkinkan developer membangun antarmuka dengan cepat tanpa harus menulis banyak kode CSS kustom. Simak kelebihan dan cara implementasinya di proyekmu."
+  },
+  {
+    id: 3,
+    title: "Membangun Aplikasi Web dengan Next.js",
+    content: "Next.js menawarkan SSR, SSG, dan routing otomatis yang menjadikannya pilihan ideal untuk membangun aplikasi web modern. Pelajari struktur dasar dan praktik terbaik dalam pengembangannya."
+  },
+  {
+    id: 4,
+    title: "Mengapa Banyak Developer Beralih ke Functional Programming",
+    content: "Artikel ini mengulas alasan di balik pergeseran paradigma dari OOP ke functional programming di kalangan perusahaan teknologi besar seperti Facebook dan Twitter."
+  },
+  {
+    id: 5,
+    title: "Tailwind CSS vs CSS Tradisional: Mana yang Lebih Baik?",
+    content: "Perbandingan antara pendekatan utility-first dan penulisan CSS konvensional. Temukan mana yang lebih cocok untuk gaya kerja dan kebutuhan proyekmu."
+  },
+  {
+    id: 6,
+    title: "Cara Deploy Aplikasi Next.js ke Vercel Secara Gratis",
+    content: "Panduan praktis mulai dari instalasi Next.js hingga deployment langsung ke Vercel dengan custom domain dan pengaturan environment variables."
+  }
 ];
+
 
 export default function Essays() {
   // State untuk menyimpan artikel yang dipilih
